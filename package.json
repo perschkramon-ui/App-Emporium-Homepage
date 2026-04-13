@@ -1,0 +1,9 @@
+{
+  "name": "app-emporium",
+  "version": "1.0.0",
+  "description": "App-Emporium Homepage",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000"
+  }
+}

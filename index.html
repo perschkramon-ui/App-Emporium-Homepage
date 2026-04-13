@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App-Emporium – Smarte Apps für jedes Business</title>
+  <meta name="description" content="App-Emporium bietet professionelle Web-Apps für Unternehmen: Zeiterfassung, Rechnungsgenerator, Restaurant-Reservierung und Fitness-Tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="#" class="logo" aria-label="App-Emporium Startseite">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text"><strong>App</strong>-Emporium</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Preise</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#kontakt" class="btn-nav">Jetzt anfragen →</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow glow-1"></div>
+      <div class="hero-glow glow-2"></div>
+      <div class="hero-glow glow-3"></div>
+    </div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="container" style="display:flex; align-items:center; gap:60px; width:100%; position:relative; z-index:1;">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          4 Apps · Sofort einsatzbereit
+        </div>
+        <h1 class="hero-title">
+          Smarte Apps für<br />
+          <span class="gradient-text">jedes Business</span>
+        </h1>
+        <p class="hero-sub">
+          Von Zeiterfassung bis Fitness-Tracking – App-Emporium liefert professionelle Web-Apps, die dein Unternehmen effizienter machen.
+        </p>
+        <div class="hero-actions">
+          <a href="#apps" class="btn-primary" id="heroAppsBtn">
+            <span>Alle Apps entdecken</span>
+            <span>→</span>
+          </a>
+          <a href="#kontakt" class="btn-ghost" id="heroKontaktBtn">
+            <span>💬</span>
+            <span>Kostenlos beraten lassen</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>4</strong>
+            <span>Web-Apps</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Web-basiert</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Verfügbar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- floating phone mockup -->
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="phone-statusbar">
+              <span>9:41</span>
+              <span>●●● 100%</span>
+            </div>
+            <div class="phone-content">
+              <p class="phone-greeting">Willkommen bei</p>
+              <p class="phone-app-name">App-Emporium</p>
+              <div class="phone-apps">
+                <div class="phone-app-icon" style="background:linear-gradient(135deg,#1e1b4b,#3b0764)">🕐</div>
+                <div class="phone-app-icon" style="background:linear-gradient(135deg,#0f172a,#1e3a5f)">🧾</div>
+                <div class="phone-app-icon" style="background:linear-gradient(135deg,#042f2e,#0f766e)">🍽️</div>
+                <div class="phone-app-icon" style="background:linear-gradient(135deg,#431407,#7c2d12)">💪</div>
+              </div>
+              <div class="phone-badge">✅ 4 Apps aktiv</div>
+            </div>
+          </div>
+        </div>
+        <!-- floating cards -->
+        <div class="floating-card card-1">
+          <span class="fc-icon">🕐</span>
+          <div>
+            <strong>ZeitScan</strong>
+            <p>Stempel erfasst ✓</p>
+          </div>
+        </div>
+        <div class="floating-card card-2">
+          <span class="fc-icon">💪</span>
+          <div>
+            <strong>GymPro</strong>
+            <p>Workout gestartet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ APPS SECTION ══ -->
+  <section class="section section-dark" id="apps">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Unsere Apps</span>
+        <h2>Vier starke Tools –<br /><span class="gradient-text">ein Anbieter</span></h2>
+        <p>Jede App wird individuell auf dein Unternehmen abgestimmt und ist sofort einsatzbereit.</p>
+      </div>
+
+      <div class="apps-grid">
+
+        <!-- ZeitScan -->
+        <div class="app-card app-card-featured" id="card-zeitscan">
+          <div class="featured-glow"></div>
+          <div class="app-card-header">
+            <img src="icon_zeitscan.png" alt="ZeitScan Icon" class="app-icon" />
+            <div class="app-badges">
+              <span class="badge badge-popular">⭐ Beliebt</span>
+              <span class="badge badge-web">Web-App</span>
+            </div>
+          </div>
+          <div class="app-card-body">
+            <h3>ZeitScan – Zeiterfassung</h3>
+            <p>Digitale Arbeitszeiterfassung per QR-Code-Scan. DSGVO-konform, rechtsicher nach ArbZG mit automatischer Pausenregelung.</p>
+            <div class="app-features">
+              <span>✅ QR-Code Stempeluhr</span>
+              <span>◦ Automatische Pausenabzüge (§4 ArbZG)</span>
+              <span>◦ Admin-Dashboard & Berichte</span>
+              <span>◦ Multi-Tenant fähig</span>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="app-price">
+              <span class="price-amount">ab 15 €</span>
+              <span class="price-period"> / Monat</span>
+            </div>
+            <a href="#kontakt" class="btn-download" id="zeitscan-cta">Mehr erfahren →</a>
+          </div>
+        </div>
+
+        <!-- BillForge -->
+        <div class="app-card" id="card-billforge">
+          <div class="app-card-header">
+            <img src="icon_billforge.png" alt="BillForge Icon" class="app-icon" />
+            <div class="app-badges">
+              <span class="badge badge-new">Neu</span>
+              <span class="badge badge-web">Web-App</span>
+            </div>
+          </div>
+          <div class="app-card-body">
+            <h3>BillForge – Rechnungen</h3>
+            <p>Professionelle Rechnungen in Sekunden erstellen, PDF-Export, Kundenverwaltung und GoBD-konforme Archivierung inklusive.</p>
+            <div class="app-features">
+              <span>✅ PDF-Export auf Knopfdruck</span>
+              <span>◦ Kunden- & Produktverwaltung</span>
+              <span>◦ Fortlaufende Rechnungsnummern</span>
+              <span>◦ Eigenes Firmen-Branding</span>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="app-price">
+              <span class="price-amount">ab 10 €</span>
+              <span class="price-period"> / Monat</span>
+            </div>
+            <a href="#kontakt" class="btn-download" id="billforge-cta">Mehr erfahren →</a>
+          </div>
+        </div>
+
+        <!-- TableFlow -->
+        <div class="app-card" id="card-tableflow">
+          <div class="app-card-header">
+            <img src="icon_tableflow.png" alt="TableFlow Icon" class="app-icon" />
+            <div class="app-badges">
+              <span class="badge badge-new">Neu</span>
+              <span class="badge badge-web">Web-App</span>
+            </div>
+          </div>
+          <div class="app-card-body">
+            <h3>TableFlow – Reservierung</h3>
+            <p>Tischreservierungen für Restaurants visuell verwalten. Interaktiver Tischplan, Gästemanagement und integriertes Kassensystem.</p>
+            <div class="app-features">
+              <span>✅ Visueller Tischplan (Drag & Drop)</span>
+              <span>◦ Online-Reservierungswidget</span>
+              <span>◦ POS-Integration</span>
+              <span>◦ Wartelisten & Walk-ins</span>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="app-price">
+              <span class="price-amount">ab 25 €</span>
+              <span class="price-period"> / Monat</span>
+            </div>
+            <a href="#kontakt" class="btn-download" id="tableflow-cta">Mehr erfahren →</a>
+          </div>
+        </div>
+
+        <!-- GymPro -->
+        <div class="app-card" id="card-gympro">
+          <div class="app-card-header">
+            <img src="icon_gympro.png" alt="GymPro Icon" class="app-icon" />
+            <div class="app-badges">
+              <span class="badge badge-android">PWA</span>
+              <span class="badge badge-web">Offline</span>
+            </div>
+          </div>
+          <div class="app-card-body">
+            <h3>GymPro – Fitness Tracker</h3>
+            <p>Zero-Friction Fitness-Tracking als Progressive Web App. Workout-Logging, Barcode-Scanner für Ernährung und smarter Ruhetimer.</p>
+            <div class="app-features">
+              <span>✅ Vollständig offline nutzbar</span>
+              <span>◦ Barcode-Scanner (Nährwerte)</span>
+              <span>◦ RPE/RIR Trainingssteuerung</span>
+              <span>◦ Intelligenter Ruhetimer</span>
+            </div>
+          </div>
+          <div class="app-card-footer">
+            <div class="app-price">
+              <span class="price-amount">ab 5 €</span>
+              <span class="price-period"> / Monat</span>
+            </div>
+            <a href="#kontakt" class="btn-download" id="gympro-cta">Mehr erfahren →</a>
+          </div>
+        </div>
+
+        <!-- Custom App CTA -->
+        <div class="app-card app-card-custom" id="card-custom">
+          <span class="custom-icon">🛠️</span>
+          <h3>Deine eigene App?</h3>
+          <p>Individuelle Entwicklung nach deinen Wünschen – wir setzen deine Idee um.</p>
+          <a href="#kontakt" class="btn-outline" id="customAppBtn">Projekt anfragen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES SECTION ══ -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Warum App-Emporium</span>
+        <h2>Alles aus <span class="gradient-text">einer Hand</span></h2>
+        <p>Keine unnötige Komplexität. Alle Apps sind schlank, modern und direkt im Browser – ohne Installation.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🌐</span>
+          <h3>100% Web-basiert</h3>
+          <p>Läuft auf jedem Gerät – PC, Tablet, Smartphone. Keine App-Installation nötig, sofort im Browser verfügbar.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>DSGVO-konform</h3>
+          <p>Alle Daten werden sicher in Deutschland gespeichert. Vollständig DSGVO-konform und rechtsicher nach deutschem Recht.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Sofort einsatzbereit</h3>
+          <p>Kein langes Onboarding. Setup in wenigen Minuten – du kannst direkt loslegen.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>Echtzeit-Daten</h3>
+          <p>Alle Änderungen werden sofort synchronisiert. Kein Refresh nötig – dein Team sieht immer den aktuellen Stand.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🎨</span>
+          <h3>Individuelles Branding</h3>
+          <p>Logo, Farben und Design werden auf dein Unternehmen abgestimmt. Die App sieht aus wie deine eigene.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🛡️</span>
+          <h3>Zuverlässiger Support</h3>
+          <p>Persönlicher Support direkt vom Entwickler. Kein Ticket-System, keine langen Warteschlangen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRICING SECTION ══ -->
+  <section class="section section-dark" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Preise</span>
+        <h2>Faire Preise,<br /><span class="gradient-text">keine Überraschungen</span></h2>
+        <p>Monatliche Flat-Rate – keine Transaktionsgebühren, keine versteckten Kosten.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <!-- Starter -->
+        <div class="pricing-card" id="plan-starter">
+          <div class="pricing-header">
+            <h3>Starter</h3>
+            <div class="pricing-price">
+              <span class="price-info"><span class="price-currency">€</span></span>
+              <span class="price-num">19</span>
+              <span class="price-info"><span class="price-per">/ Monat</span></span>
+            </div>
+            <p>Perfekt für Freelancer & Kleinstbetriebe</p>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> 1 App deiner Wahl</li>
+            <li><span class="check">✓</span> Bis zu 5 Nutzer</li>
+            <li><span class="check">✓</span> E-Mail Support</li>
+            <li><span class="check">✓</span> Basis-Branding</li>
+            <li class="disabled"><span class="check" style="color:var(--clr-dim)">✗</span> Multi-App Zugang</li>
+            <li class="disabled"><span class="check" style="color:var(--clr-dim)">✗</span> Prioritäts-Support</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing" id="starterBtn">Jetzt starten</a>
+        </div>
+
+        <!-- Business (Featured) -->
+        <div class="pricing-card pricing-featured" id="plan-business">
+          <div class="pricing-badge">Empfohlen</div>
+          <div class="pricing-header">
+            <h3>Business</h3>
+            <div class="pricing-price">
+              <span class="price-info"><span class="price-currency">€</span></span>
+              <span class="price-num">59</span>
+              <span class="price-info"><span class="price-per">/ Monat</span></span>
+            </div>
+            <p>Ideal für Teams & wachsende Unternehmen</p>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Alle 4 Apps inklusive</li>
+            <li><span class="check">✓</span> Bis zu 25 Nutzer</li>
+            <li><span class="check">✓</span> Prioritäts-Support</li>
+            <li><span class="check">✓</span> Eigenes Branding</li>
+            <li><span class="check">✓</span> Erweiterte Berichte</li>
+            <li><span class="check">✓</span> API-Zugang</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing btn-pricing-featured" id="businessBtn">Jetzt starten</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card" id="plan-enterprise">
+          <div class="pricing-header">
+            <h3>Enterprise</h3>
+            <div class="pricing-price">
+              <span class="price-num" style="-webkit-text-fill-color:var(--clr-purple-light);font-size:2rem;padding-bottom:6px">Auf Anfrage</span>
+            </div>
+            <p>Für Unternehmen mit speziellen Anforderungen</p>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Unbegrenzte Nutzer</li>
+            <li><span class="check">✓</span> Individuelle Entwicklung</li>
+            <li><span class="check">✓</span> Dedizierter Account Manager</li>
+            <li><span class="check">✓</span> On-Premise Option</li>
+            <li><span class="check">✓</span> SLA-Garantie</li>
+            <li><span class="check">✓</span> White-Label möglich</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing" id="enterpriseBtn">Kontakt aufnehmen</a>
+        </div>
+
+      </div>
+      <p class="pricing-note">✅ 14 Tage kostenlos testen · Keine Kreditkarte nötig · Monatlich kündbar</p>
+    </div>
+  </section>
+
+  <!-- ══ KONTAKT / ANFRAGE ══ -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="anfrage-layout">
+        <div class="anfrage-info">
+          <div class="section-header" style="text-align:left; margin-bottom:24px;">
+            <span class="section-tag">Kontakt</span>
+          </div>
+          <h2>Bereit loszulegen?<br /><span class="gradient-text">Schreib uns.</span></h2>
+          <p>Kein langes Hin und Her. Einfach interesse angeben – wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot.</p>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <a href="mailto:kontakt@app-emporium.com">kontakt@app-emporium.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🌐</span>
+              <span>app-emporium.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">⏱️</span>
+              <span>Antwort innerhalb 24h</span>
+            </div>
+          </div>
+
+          <div class="trust-badges">
+            <span class="trust-item">🇩🇪 Made in Germany</span>
+            <span class="trust-item">🔒 DSGVO-konform</span>
+            <span class="trust-item">⭐ 14 Tage Test</span>
+            <span class="trust-item">💳 Keine Kreditkarte</span>
+          </div>
+        </div>
+
+        <form class="anfrage-form" id="anfrageForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Vorname *</label>
+              <input type="text" id="fname" name="fname" placeholder="Max" autocomplete="given-name" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Nachname *</label>
+              <input type="text" id="lname" name="lname" placeholder="Mustermann" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail-Adresse *</label>
+            <input type="email" id="email" name="email" placeholder="max@firma.de" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+49 123 456789" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="interest">Interesse an *</label>
+            <select id="interest" name="interest" required>
+              <option value="">App auswählen…</option>
+              <option value="ZeitScan (Zeiterfassung)">🕐 ZeitScan – Zeiterfassung</option>
+              <option value="BillForge (Rechnungsgenerator)">🧾 BillForge – Rechnungsgenerator</option>
+              <option value="TableFlow (Reservierungstool)">🍽️ TableFlow – Restaurantreservierung</option>
+              <option value="GymPro (Fitness App)">💪 GymPro – Fitness Tracker</option>
+              <option value="Business-Paket (alle Apps)">⭐ Business-Paket (alle Apps)</option>
+              <option value="Individuelle Entwicklung">🛠️ Individuelle App-Entwicklung</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht *</label>
+            <textarea id="message" name="message" rows="4" placeholder="Kurz beschreiben, was du benötigst…" required></textarea>
+          </div>
+          <div class="form-group" style="flex-direction:row; align-items:center; gap:12px;">
+            <input type="checkbox" id="datenschutz" name="datenschutz" style="width:auto; flex-shrink:0;" required />
+            <label for="datenschutz" style="font-size:0.82rem; cursor:pointer;">
+              Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#" style="color:var(--clr-purple-light)">Datenschutzerklärung</a> zu. *
+            </label>
+          </div>
+
+          <div id="formError" class="form-message form-error">⚠️ Bitte alle Pflichtfelder ausfüllen.</div>
+          <div id="formSuccess" class="form-message form-success" style="display:none">✅ Danke! Deine Anfrage wurde gesendet. Wir melden uns bald.</div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="submitBtnText">Anfrage senden</span>
+            <span id="submitArrow">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer style="padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text"><strong>App</strong>-Emporium</span>
+      </div>
+      <p style="font-size:0.8rem; color:var(--clr-dim);">© 2025 App-Emporium · Alle Rechte vorbehalten · Made in Germany 🇩🇪</p>
+      <div style="display:flex; gap:20px;">
+        <a href="#" style="font-size:0.8rem; color:var(--clr-dim); transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color=''">Impressum</a>
+        <a href="#" style="font-size:0.8rem; color:var(--clr-dim); transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color=''">Datenschutz</a>
+        <a href="#kontakt" style="font-size:0.8rem; color:var(--clr-dim); transition: color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color=''">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
