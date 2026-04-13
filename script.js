@@ -2,11 +2,15 @@
    APP-EMPORIUM – JavaScript
    ══════════════════════════ */
 
+document.addEventListener('DOMContentLoaded', () => {
+
 // ── Navbar scroll effect ──
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+}
 
 // ── Mobile hamburger menu ──
 const hamburger = document.getElementById('hamburger');
@@ -78,54 +82,53 @@ const submitBtn = document.getElementById('submitBtn');
 const submitBtnText = document.getElementById('submitBtnText');
 const submitArrow = document.getElementById('submitArrow');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  formError.classList.remove('show');
-  formSuccess.classList.remove('show');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (formError) formError.classList.remove('show');
+    if (formSuccess) { formSuccess.classList.remove('show'); formSuccess.style.display = ''; }
 
-  // Validate
-  const fname = form.fname.value.trim();
-  const lname = form.lname.value.trim();
-  const email = form.email.value.trim();
-  const interest = form.interest.value;
-  const message = form.message.value.trim();
-  const datenschutz = form.datenschutz.checked;
+    // Validate
+    const fname = form.fname.value.trim();
+    const lname = form.lname.value.trim();
+    const email = form.email.value.trim();
+    const interest = form.interest.value;
+    const message = form.message.value.trim();
+    const datenschutz = form.datenschutz.checked;
 
-  if (!fname || !lname || !email || !interest || !message || !datenschutz) {
-    formError.classList.add('show');
-    formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    return;
-  }
+    if (!fname || !lname || !email || !interest || !message || !datenschutz) {
+      if (formError) { formError.classList.add('show'); formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+      return;
+    }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    formError.textContent = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-    formError.classList.add('show');
-    return;
-  }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (formError) { formError.textContent = '⚠️ Bitte geben Sie eine gültige E-Mail-Adresse ein.'; formError.classList.add('show'); }
+      return;
+    }
 
-  // Loading state
-  submitBtn.disabled = true;
-  submitBtnText.textContent = 'Wird gesendet…';
-  submitArrow.style.display = 'none';
+    // Loading state
+    if (submitBtn) { submitBtn.disabled = true; }
+    if (submitBtnText) submitBtnText.textContent = 'Wird gesendet…';
+    if (submitArrow) submitArrow.style.display = 'none';
 
-  // Simulate send (replace with actual backend/formspree later)
-  await new Promise(r => setTimeout(r, 1800));
+    // Simulate send (replace with actual backend/formspree later)
+    await new Promise(r => setTimeout(r, 1800));
 
-  // Build mailto link as fallback
-  const subject = encodeURIComponent(`App-Emporium Anfrage: ${interest}`);
-  const body = encodeURIComponent(
-    `Name: ${fname} ${lname}\nE-Mail: ${email}\nTelefon: ${form.phone.value || '–'}\nInteresse: ${interest}\n\nNachricht:\n${message}`
-  );
-  
-  // Open mailto (fallback if no backend)
-  window.location.href = `mailto:kontakt@app-emporium.com?subject=${subject}&body=${body}`;
+    // Build mailto link as fallback
+    const subject = encodeURIComponent(`App-Emporium Anfrage: ${interest}`);
+    const body = encodeURIComponent(
+      `Name: ${fname} ${lname}\nE-Mail: ${email}\nTelefon: ${form.phone.value || '–'}\nInteresse: ${interest}\n\nNachricht:\n${message}`
+    );
+    
+    // Open mailto (fallback if no backend)
+    window.location.href = `mailto:kontakt@app-emporium.com?subject=${subject}&body=${body}`;
 
-  // Show success
-  submitBtn.style.display = 'none';
-  formSuccess.classList.add('show');
-  formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  form.reset();
-});
+    // Show success
+    if (submitBtn) submitBtn.style.display = 'none';
+    if (formSuccess) { formSuccess.style.display = 'block'; formSuccess.classList.add('show'); formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    form.reset();
+  });
+}
 
 // ── Active nav link highlighting ──
 const sections = document.querySelectorAll('section[id]');
@@ -359,3 +362,5 @@ if(modalInquireBtn) {
 }
 
 console.log('%c🚀 App-Emporium loaded', 'color:#7c3aed;font-size:1.2rem;font-weight:bold');
+
+}); // end DOMContentLoaded
