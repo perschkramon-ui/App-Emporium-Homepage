@@ -160,9 +160,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ── Tilt effect on app cards ──
+// ── Tilt effect on app cards (deactivated on button hover to prevent blocking) ──
 document.querySelectorAll('.app-card:not(.app-card-custom)').forEach(card => {
   card.addEventListener('mousemove', (e) => {
+    // Don't tilt if hovering a button
+    if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -204,59 +206,156 @@ const priceObserver = new IntersectionObserver((entries) => {
 
 priceNums.forEach(el => priceObserver.observe(el));
 
-// ── "Projekt anfragen" → scroll to form + pre-select option ──
-const customAppBtn = document.getElementById('customAppBtn');
-if (customAppBtn) {
-  customAppBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const kontakt = document.getElementById('kontakt');
-    const interestSelect = document.getElementById('interest');
-    if (kontakt) kontakt.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (interestSelect) {
+// ── Global selectApp() – called via onclick in HTML ──
+window.selectApp = function(value, e) {
+  if (e) e.preventDefault();
+  const kontakt = document.getElementById('kontakt');
+  const interestSelect = document.getElementById('interest');
+  if (kontakt) kontakt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (interestSelect) {
+    setTimeout(() => {
+      interestSelect.value = value;
+      interestSelect.focus();
+      interestSelect.style.borderColor = '#7c3aed';
+      interestSelect.style.boxShadow = '0 0 0 3px rgba(124,58,237,0.3)';
       setTimeout(() => {
-        interestSelect.value = 'Individuelle Entwicklung';
-        interestSelect.focus();
-        // Highlight the select briefly
-        interestSelect.style.borderColor = '#7c3aed';
-        interestSelect.style.boxShadow = '0 0 0 3px rgba(124,58,237,0.3)';
-        setTimeout(() => {
-          interestSelect.style.borderColor = '';
-          interestSelect.style.boxShadow = '';
-        }, 1800);
-      }, 600);
-    }
+        interestSelect.style.borderColor = '';
+        interestSelect.style.boxShadow = '';
+      }, 1800);
+    }, 500);
+  }
+};
+
+// ── App Modal Management ──
+const appData = {
+  zeitscan: {
+    id: "ZeitScan (Zeiterfassung)",
+    name: "ZeitScan",
+    icon: "icon_zeitscan.png",
+    badges: ['<span class="badge badge-popular">⭐ Beliebt</span>', '<span class="badge badge-web">Web-App</span>'],
+    desc: "Digitale Arbeitszeiterfassung – flexibel für jeden Betrieb. Das Besondere: Jeder Mitarbeiter erhält seine eigene persönliche App-Instanz, erreichbar auf zwei Wegen: per direktem Link auf jedem Smartphone oder Tablet, oder durch einfaches Scannen eines QR-Codes an einem zentralen Gerät. DSGVO-konform, rechtsicher nach §4 ArbZG mit automatischer Pausenregelung und umfangreichem Admin-Dashboard.",
+    features: [
+      "Persönliche App per Link oder QR-Code",
+      "QR-Code Stempeluhr (zentrales Gerät)",
+      "Automatische Pausenabzüge (§4 ArbZG)",
+      "Admin-Dashboard & Berichte",
+      "Export für Steuerberater",
+      "DSGVO-konform & rechtsicher"
+    ],
+    link: "https://zeitscan--studio-1102330467-ee607.europe-west4.hosted.app"
+  },
+  billforge: {
+    id: "BillForge (Rechnungsgenerator)",
+    name: "RE-Generator",
+    icon: "icon_regenerator.png",
+    badges: ['<span class="badge badge-new">Neu</span>', '<span class="badge badge-web">Web-App</span>'],
+    desc: "Professionelle Rechnungen in Sekunden erstellen, als PDF exportieren und GoBD-konform archivieren. Der RE-Generator nimmt dir die Arbeit ab: Kundenkartei verwalten, Produkte vordefinieren und mit einem Klick eine makellose Rechnung erzeugen. Jeder Nutzer hat seinen komplett abgetrennten, privaten Datenbereich – keinerlei Datenvermischung möglich.",
+    features: [
+      "PDF-Export auf Knopfdruck",
+      "Kunden- & Produktverwaltung",
+      "Automatische Rechnungsnummern",
+      "Eigenes Firmen-Branding & Logo",
+      "Umsatz-Tracking & Auswertung",
+      "GoBD-konforme Archivierung",
+      "100% datenisoliert pro Nutzer"
+    ],
+    link: "https://re-generator-f1de5.web.app"
+  },
+  tableflow: {
+    id: "TableFlow (Reservierungstool)",
+    name: "TableFlow",
+    icon: "icon_tableflow.png",
+    badges: ['<span class="badge badge-new">Neu</span>', '<span class="badge badge-web">Web-App</span>'],
+    desc: "Das smarte Reservierungssystem für dich. Gestalte deinen Grundriss visuell im Browser, nimm Online-Reservierungen an und weise Gäste direkt den Tischen zu. Mit integriertem Kassensystem-Interface (POS) für effizienten Service aus einer Hand.",
+    features: [
+      "Visueller Tischplan",
+      "Online-Reservierungswidget",
+      "POS-Integration (Kasse)",
+      "Wartelisten & Walk-ins",
+      "No-Show Prävention",
+      "Gäste-Verwaltung"
+    ],
+    link: "https://tableflow.app-emporium.de"
+  },
+  gympro: {
+    id: "GymPro (Fitness App)",
+    name: "GymPro",
+    icon: "icon_gympro.png",
+    badges: ['<span class="badge badge-android">PWA</span>', '<span class="badge badge-web">Offline</span>'],
+    desc: "Die Zero-Friction Fitness Progressive Web App. Entwickelt für die reibungslose Erfassung deines Workouts direkt im Gym, auch offline. Mit RPE/RIR für genaue Belastungssteuerung, smartem Ruhetimer und superschnellem Barcode-Scanner für Nährwerte.",
+    features: [
+      "Vollständig offline nutzbar",
+      "Barcode-Scanner für Nährwerte",
+      "RPE/RIR Trainingssteuerung",
+      "Intelligenter Ruhetimer",
+      "Visueller Plate-Calculator",
+      "Lückenlose Analyse"
+    ],
+    link: "https://gympro.app-emporium.de"
+  }
+};
+
+const modal = document.getElementById('appModal');
+const modalIcon = document.getElementById('modalIcon');
+const modalTitle = document.getElementById('modalTitle');
+const modalBadges = document.getElementById('modalBadges');
+const modalDesc = document.getElementById('modalDesc');
+const modalFeatures = document.getElementById('modalFeatures');
+const modalLink = document.getElementById('modalLink');
+const modalInquireBtn = document.getElementById('modalInquireBtn');
+const modalCloseBtn = document.getElementById('modalClose');
+let currentAppId = "";
+
+window.openAppModal = function(appKey, event) {
+  if (event) event.preventDefault();
+  const data = appData[appKey];
+  if (!data) {
+    console.error('App nicht gefunden:', appKey);
+    return;
+  }
+  
+  currentAppId = data.id;
+  modalIcon.src = data.icon;
+  modalTitle.textContent = data.name;
+  modalBadges.innerHTML = data.badges.join('');
+  modalDesc.textContent = data.desc;
+  
+  modalFeatures.innerHTML = data.features.map(f => `<li><span class="check">✓</span> ${f}</li>`).join('');
+  
+  modalLink.href = data.link;
+  
+  // Zeige Modal an
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
+
+// ── Event delegation für App-Buttons (zusätzlich zu onclick) ──
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-app]');
+  if (btn) {
+    e.preventDefault();
+    window.openAppModal(btn.dataset.app, e);
+  }
+});
+
+function closeAppModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeAppModal);
+if(modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeAppModal();
   });
 }
 
-// ── App card CTAs → scroll to form + pre-select option ──
-const appCtaMap = {
-  'zeitscan-cta':  'ZeitScan (Zeiterfassung)',
-  'billforge-cta': 'BillForge (Rechnungsgenerator)',
-  'tableflow-cta': 'TableFlow (Reservierungstool)',
-  'gympro-cta':    'GymPro (Fitness App)',
-};
-
-Object.entries(appCtaMap).forEach(([id, value]) => {
-  const btn = document.getElementById(id);
-  if (!btn) return;
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const kontakt = document.getElementById('kontakt');
-    const interestSelect = document.getElementById('interest');
-    if (kontakt) kontakt.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (interestSelect) {
-      setTimeout(() => {
-        interestSelect.value = value;
-        interestSelect.focus();
-        interestSelect.style.borderColor = '#7c3aed';
-        interestSelect.style.boxShadow = '0 0 0 3px rgba(124,58,237,0.3)';
-        setTimeout(() => {
-          interestSelect.style.borderColor = '';
-          interestSelect.style.boxShadow = '';
-        }, 1800);
-      }, 600);
-    }
+if(modalInquireBtn) {
+  modalInquireBtn.addEventListener('click', () => {
+    closeAppModal();
+    window.selectApp(currentAppId);
   });
-});
+}
 
 console.log('%c🚀 App-Emporium loaded', 'color:#7c3aed;font-size:1.2rem;font-weight:bold');

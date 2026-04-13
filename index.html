@@ -145,12 +145,12 @@
           </div>
           <div class="app-card-body">
             <h3>ZeitScan – Zeiterfassung</h3>
-            <p>Digitale Arbeitszeiterfassung per QR-Code-Scan. DSGVO-konform, rechtsicher nach ArbZG mit automatischer Pausenregelung.</p>
+            <p>Digitale Arbeitszeiterfassung per QR-Code oder persönlichem Link. DSGVO-konform, rechtsicher nach ArbZG – und jeder Mitarbeiter erhält seine eigene persönliche App-Instanz.</p>
             <div class="app-features">
               <span>✅ QR-Code Stempeluhr</span>
+              <span>◦ Persönliche App pro Mitarbeiter</span>
               <span>◦ Automatische Pausenabzüge (§4 ArbZG)</span>
-              <span>◦ Admin-Dashboard & Berichte</span>
-              <span>◦ Multi-Tenant fähig</span>
+              <span>◦ Admin-Dashboard &amp; Berichte</span>
             </div>
           </div>
           <div class="app-card-footer">
@@ -158,27 +158,27 @@
               <span class="price-amount">ab 15 €</span>
               <span class="price-period"> / Monat</span>
             </div>
-            <a href="#kontakt" class="btn-download" id="zeitscan-cta">Mehr erfahren →</a>
+            <button class="btn-download" id="zeitscan-cta" data-app="zeitscan">Mehr erfahren →</button>
           </div>
         </div>
 
-        <!-- BillForge -->
+        <!-- RE-Generator -->
         <div class="app-card" id="card-billforge">
           <div class="app-card-header">
-            <img src="icon_billforge.png" alt="BillForge Icon" class="app-icon" />
+            <img src="icon_regenerator.png" alt="RE-Generator Icon" class="app-icon" />
             <div class="app-badges">
               <span class="badge badge-new">Neu</span>
               <span class="badge badge-web">Web-App</span>
             </div>
           </div>
           <div class="app-card-body">
-            <h3>BillForge – Rechnungen</h3>
-            <p>Professionelle Rechnungen in Sekunden erstellen, PDF-Export, Kundenverwaltung und GoBD-konforme Archivierung inklusive.</p>
+            <h3>RE-Generator – Rechnungen</h3>
+            <p>Professionelle Rechnungen in Sekunden erstellen, PDF-Export, Kundenverwaltung und GoBD-konforme Archivierung. Jeder Nutzer hat einen komplett abgetrennten, privaten Datenbereich.</p>
             <div class="app-features">
               <span>✅ PDF-Export auf Knopfdruck</span>
-              <span>◦ Kunden- & Produktverwaltung</span>
-              <span>◦ Fortlaufende Rechnungsnummern</span>
-              <span>◦ Eigenes Firmen-Branding</span>
+              <span>◦ Kunden- &amp; Produktverwaltung</span>
+              <span>◦ Automatische Rechnungsnummern</span>
+              <span>◦ 100% Datenisolierung pro Nutzer</span>
             </div>
           </div>
           <div class="app-card-footer">
@@ -186,7 +186,7 @@
               <span class="price-amount">ab 10 €</span>
               <span class="price-period"> / Monat</span>
             </div>
-            <a href="#kontakt" class="btn-download" id="billforge-cta">Mehr erfahren →</a>
+            <button class="btn-download" id="billforge-cta" data-app="billforge">Mehr erfahren →</button>
           </div>
         </div>
 
@@ -214,7 +214,7 @@
               <span class="price-amount">ab 25 €</span>
               <span class="price-period"> / Monat</span>
             </div>
-            <a href="#kontakt" class="btn-download" id="tableflow-cta">Mehr erfahren →</a>
+            <button class="btn-download" id="tableflow-cta" data-app="tableflow">Mehr erfahren →</button>
           </div>
         </div>
 
@@ -242,7 +242,7 @@
               <span class="price-amount">ab 5 €</span>
               <span class="price-period"> / Monat</span>
             </div>
-            <a href="#kontakt" class="btn-download" id="gympro-cta">Mehr erfahren →</a>
+            <button class="btn-download" id="gympro-cta" data-app="gympro">Mehr erfahren →</button>
           </div>
         </div>
 
@@ -251,7 +251,7 @@
           <span class="custom-icon">🛠️</span>
           <h3>Deine eigene App?</h3>
           <p>Individuelle Entwicklung nach deinen Wünschen – wir setzen deine Idee um.</p>
-          <a href="#kontakt" class="btn-outline" id="customAppBtn">Projekt anfragen</a>
+          <a href="#kontakt" class="btn-outline" id="customAppBtn" onclick="selectApp('Individuelle Entwicklung',event)">Projekt anfragen</a>
         </div>
 
       </div>
@@ -484,6 +484,28 @@
       </div>
     </div>
   </footer>
+
+  <!-- ══ APP MODAL ══ -->
+  <div class="modal-overlay" id="appModal" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose" aria-label="Schließen">×</button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="" alt="App Icon" id="modalIcon" class="modal-icon" />
+          <h3 id="modalTitle">App Name</h3>
+          <div class="modal-badges" id="modalBadges"></div>
+        </div>
+        <div class="modal-body">
+          <p id="modalDesc"></p>
+          <ul id="modalFeatures" class="modal-features-list"></ul>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn-primary" id="modalLink" target="_blank" rel="noopener noreferrer">Zur App / Download</a>
+          <button class="btn-ghost" id="modalInquireBtn">Jetzt anfragen</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
